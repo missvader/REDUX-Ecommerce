@@ -2,12 +2,15 @@ import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {auth} from "../../firebase/firebaseConfig";
 import {signInWithEmailAndPassword} from "firebase/auth"
+import { useDispatch } from "react-redux";
+import { setActiveUser } from "../../reducers/user/authSlice";
 
 const Login= () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -19,7 +22,11 @@ const Login= () => {
       console.log(user)
       setLoading(false)
       alert('Login successful')
-      // navigate('/')
+      dispatch(setActiveUser({
+        email: user.email,
+        userId: user.uid
+      }))
+      navigate('/home')
     })
     .catch((error) => {
       setLoading(false)
@@ -29,11 +36,11 @@ const Login= () => {
   }
   return (
     <>
-    <section className="vh-100 container-fluid " >
-      <div className="container h-100 ">
+    <section className=" container-fluid bg-secondary-subtle" >
+      <div className="container">
         <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-lg-12 col-xl-11">
-            <div className="card text-black border-0" >
+          <div className="col-lg-8 col-xl-10">
+            <div className="card text-black border-0 my-5" >
               <div className="card-body p-md-5">
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
@@ -71,7 +78,7 @@ const Login= () => {
                         </div>
                       </div>
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="submit" className="btn btn-primary btn-lg">Log In</button>
+                        <button type="submit" className="btn btn-dark btn-lg">Log In</button>
                       </div>
                     </form>
                   </div>

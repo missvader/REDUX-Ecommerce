@@ -27,11 +27,11 @@ const Signup = () =>{
         const user = userCredential.user;
         console.log(user);
         setLoading(false);
-        alert("Registration succesful!!")
+        alert(userName + " your registration has been succesfully!")
         dispatch(setActiveUser({
           email: user.email,
           userName: userName,
-          userId: user.userId
+          userId: user.uid
         }))
         navigate("/home");
       })
@@ -46,11 +46,11 @@ const Signup = () =>{
   return(
     <>
       {loading && <Loader/>}
-    <section className="vh-100 container-fluid " >
-      <div className="container h-100 ">
+    <section className=" container-fluid " >
+      <div className="container  ">
         <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-lg-12 col-xl-11">
-            <div className="card text-black border-0" >
+          <div className="col-lg-8 col-xl-10">
+            <div className="card text-black border-0 my-4" >
               <div className="card-body p-md-5">
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
@@ -120,7 +120,7 @@ const Signup = () =>{
                       </div>
                       
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="submit" className="btn btn-primary btn-lg">Register</button>
+                        <button type="submit" className="btn btn-dark btn-lg">Register</button>
                       </div>
                     </form>
                   </div>
