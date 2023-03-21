@@ -1,11 +1,10 @@
 import { Link , useNavigate} from "react-router-dom";
-import { useState } from "react";
 import {AiFillShop} from "react-icons/ai";
 import {FaShoppingCart} from "react-icons/fa";
 import {Nav, Navbar, NavLink} from 'react-bootstrap';
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector , useDispatch} from "react-redux";
 import { removeActiveUser } from "../reducers/user/authSlice";
+
 const Header = () => {
   const user = useSelector(state => state.user)
   const dispatch = useDispatch();
@@ -35,10 +34,10 @@ const Header = () => {
           </div>
           <Navbar.Collapse id="navbarScroll">
             <Nav className="container d-flex justify-content-between"> 
-              <NavLink  eventKey="1" as={Link} to="/products"className="ms-md-5">EXPLORE</NavLink>
+              <NavLink  eventkey="1" as={Link} to="/products"className="ms-md-5">EXPLORE</NavLink>
               {user.isLoggedIn ?
-                <NavLink  eventKey="2" onClick={handleLogout}>LOG OUT</NavLink> :
-                <NavLink  eventKey="2" as={Link} to="/login"> LOG IN</NavLink>
+                <NavLink  eventkey="2" onClick={handleLogout}>LOG OUT</NavLink> :
+                <NavLink  eventkey="2" as={Link} to="/login"> LOG IN</NavLink>
               }
             </Nav>
           </Navbar.Collapse>
