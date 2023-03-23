@@ -7,6 +7,7 @@ import { removeActiveUser } from "../reducers/user/authSlice";
 
 const Header = () => {
   const user = useSelector(state => state.user)
+  const totalCount = useSelector(state => state.cart.totalCount)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -23,11 +24,12 @@ const Header = () => {
             <div className="align-self-center fw-bold">Shop Center</div>  
           </Link>
           <div className=" d-flex justify-end">
-            <button type="button" className="btn btn-outline-dark me-3 d-sm-none">
-              <FaShoppingCart
-              />
-              <span className="ms-3 badge rounded-pill bg-dark">0</span>
-            </button>
+            <NavLink as={Link} to="/shoppingCart" type="button" 
+               className="btn btn-outline-dark  me-3 d-sm-none p-1 "
+               >
+              <FaShoppingCart />
+              <span className="ms-3 badge rounded-pill bg-dark">{totalCount}</span>
+            </NavLink>
             <Navbar.Toggle aria-controls="navbarScroll" data-bs-target="#navbarScroll">
               <span className="navbar-toggler-icon"></span>
             </Navbar.Toggle>
@@ -41,11 +43,11 @@ const Header = () => {
               }
             </Nav>
           </Navbar.Collapse>
-          <button type="button" className="btn btn-outline-dark me-3 d-none d-md-block">
+          <NavLink as={Link} to="/shoppingCart" type="button"  className="btn btn-outline-dark me-3 d-none d-md-block p-2 ">
               <FaShoppingCart
               />
-              <span className="ms-3 badge rounded-pill bg-dark">0</span>
-            </button>
+              <span className="ms-3 badge rounded-pill bg-dark">{totalCount}</span>
+          </NavLink>
         </div>
       </Navbar>
     </div>
