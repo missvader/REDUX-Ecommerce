@@ -4,17 +4,20 @@ import {FaShoppingCart} from "react-icons/fa";
 import {Nav, Navbar, NavLink} from 'react-bootstrap';
 import { useSelector , useDispatch} from "react-redux";
 import { removeActiveUser } from "../reducers/user/authSlice";
+import { useEffect } from "react";
 
 const Header = () => {
-  const user = useSelector(state => state.user)
-  const totalCount = useSelector(state => state.cart.totalCount)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const user = useSelector(state => state.user)
+  const cartTotalQuantity = useSelector(state => state.cart.cartTotalQuantity)
   const handleLogout = () => {
     dispatch(removeActiveUser());
     navigate("/")
   }
+  
+  
+  
   return (
     <div className="container-fluid  ">
       <Navbar collapseOnSelect expand="sm"> 
@@ -28,7 +31,7 @@ const Header = () => {
                className="btn btn-outline-dark  me-3 d-sm-none p-1 "
                >
               <FaShoppingCart />
-              <span className="ms-3 badge rounded-pill bg-dark">{totalCount}</span>
+              <span className="ms-3 badge rounded-pill bg-dark">{cartTotalQuantity}</span>
             </NavLink>
             <Navbar.Toggle aria-controls="navbarScroll" data-bs-target="#navbarScroll">
               <span className="navbar-toggler-icon"></span>
@@ -46,7 +49,7 @@ const Header = () => {
           <NavLink as={Link} to="/shoppingCart" type="button"  className="btn btn-outline-dark me-3 d-none d-md-block p-2 ">
               <FaShoppingCart
               />
-              <span className="ms-3 badge rounded-pill bg-dark">{totalCount}</span>
+              <span className="ms-3 badge rounded-pill bg-dark">{cartTotalQuantity}</span>
           </NavLink>
         </div>
       </Navbar>

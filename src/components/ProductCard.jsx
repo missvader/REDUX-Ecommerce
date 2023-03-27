@@ -1,16 +1,14 @@
-import { addProductToCart, removeProductFromCart } from "../reducers/cart/cartSlice";
-import { useSelector , useDispatch } from "react-redux";
+import { addToCart } from "../reducers/cart/cartSlice";
+import { useDispatch } from "react-redux";
 import {FaShoppingCart} from "react-icons/fa";
 
 
 const ProductCard = ({name, price, category,id, image, product}) => {
   const dispatch = useDispatch();
-  const handleProduct = (productId) => {
-    dispatch(addProductToCart(product))
-   }
+  
   return (
-    <div className="col-10 col-md-5 col-lg-4  mb-4 ">
-      <div className="card shadow h-100 p-4 rounded rounded-5 border border-2 border-warning">
+    <div className="col-10 col-md-5 col-lg-4 mb-4">
+      <div className="card shadow h-100 p-4 rounded rounded-5 border border-2 border-warning mb-2">
         <img
           className="card-img-top cover"
           height="200"
@@ -24,7 +22,11 @@ const ProductCard = ({name, price, category,id, image, product}) => {
         <div className="d-grid ">
           <button type="button" 
             className="btn btn-outline-dark mb-4  rounded rounded-5"
-            onClick={() => handleProduct()}
+            onClick={() => 
+              dispatch(addToCart({
+                id, name, image, price
+              }))
+            }
             >
             <FaShoppingCart className="me-4 "/> ADD TO CART
           </button>
