@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {auth} from "../../firebase/firebaseConfig";
 import {signInWithEmailAndPassword} from "firebase/auth"
 import { useDispatch } from "react-redux";
-import { setActiveUser } from "../../reducers/user/authSlice";
+import { setActiveUser } from "../../redux/reducers/user/authSlice";
 
 const Login= () => {
   const [email, setEmail] = useState('')

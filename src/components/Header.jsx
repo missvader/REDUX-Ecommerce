@@ -3,8 +3,7 @@ import {AiFillShop} from "react-icons/ai";
 import {FaShoppingCart} from "react-icons/fa";
 import {Nav, Navbar, NavLink} from 'react-bootstrap';
 import { useSelector , useDispatch} from "react-redux";
-import { removeActiveUser } from "../reducers/user/authSlice";
-import { useEffect } from "react";
+import { removeActiveUser } from "../redux/reducers/user/authSlice";
 
 const Header = () => {
   const dispatch = useDispatch();

@@ -3,8 +3,8 @@ import { configureStore } from '@reduxjs/toolkit'
 //configureStore es una funcion que ya nos da la libreria 
 
 //reducers
-import authReducer from "../reducers/user/authSlice"
-import cartReducer from "../reducers/cart/cartSlice"
+import authReducer from "../redux/reducers/user/authSlice"
+import cartReducer from "../redux/reducers/cart/cartSlice"
 
 export const store = configureStore({
   reducer: {

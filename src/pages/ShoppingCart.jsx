@@ -1,15 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
-import {FaTrashAlt} from 'react-icons/fa';
 import { IoCaretBackOutline} from "react-icons/io5";
-import { AiFillMinusCircle , AiFillPlusCircle  } from "react-icons/ai";
 import CartEmpty from "../assets/CardEmpty.svg"
 import CartItem from '../components/CartItem';
 import Total from '../components/Total';
 
 const ShoppingCart = () => {
   const cartItems = useSelector(state => state.cart.cartItems);
-  const dispatch = useDispatch();
   
   return (
     <section className="d-lg-flex  justify-content-center ">

@@ -1,5 +1,3 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import ScrollToTopOnMount from "../utils/ScrollToTopOnMount";
 import Banner from "../assets/banner.jpg";

@@ -1,9 +1,9 @@
-import { addToCart } from "../reducers/cart/cartSlice";
+import { addToCart } from "../redux/reducers/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import {FaShoppingCart} from "react-icons/fa";
 
 
-const ProductCard = ({name, price, category,id, image, product}) => {
+const ProductCard = ({name, price,id, image}) => {
   const dispatch = useDispatch();
   
   return (

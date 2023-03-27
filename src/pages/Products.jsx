@@ -1,8 +1,6 @@
 import { useState , useEffect} from "react";
-import { useDispatch } from "react-redux";
 import ProductCard from "../components/ProductCard";
 const Products = () => {
-  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null)
   const [products, setProducts] = useState([]);

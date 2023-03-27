@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {auth} from "../../firebase/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { setActiveUser } from "../../reducers/user/authSlice";
+import { setActiveUser } from "../../redux/reducers/user/authSlice";
 import { Loader } from "../../components/Loader";
 
 const Signup = () =>{

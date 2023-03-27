@@ -1,6 +1,6 @@
 import {FaTrashAlt} from 'react-icons/fa';
 import { AiFillMinusCircle , AiFillPlusCircle  } from "react-icons/ai";
-import { incrementQuantity, decrementQuantity, removeItem } from '../reducers/cart/cartSlice';
+import { incrementQuantity, decrementQuantity, removeItem } from '../redux/reducers/cart/cartSlice';
 import { useDispatch } from 'react-redux';
 
 const CartItem = ({id, name, price, image, quantity=0}) => {
