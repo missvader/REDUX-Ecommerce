@@ -5,6 +5,7 @@ import { IoCaretBackOutline} from "react-icons/io5";
 import { AiFillMinusCircle , AiFillPlusCircle  } from "react-icons/ai";
 import CartEmpty from "../assets/CardEmpty.svg"
 import CartItem from '../components/CartItem';
+import Total from '../components/Total';
 
 const ShoppingCart = () => {
   const cartItems = useSelector(state => state.cart.cartItems);
@@ -35,11 +36,12 @@ const ShoppingCart = () => {
                     key={item.id}
                     id={item.id}
                     image={item.image}
-                    title={item.title}
+                    name={item.name}
                     price={item.price}
                     quantity={item.quantity}
                   />
                 ))}
+                <Total/>
                 </>
               )
             }
