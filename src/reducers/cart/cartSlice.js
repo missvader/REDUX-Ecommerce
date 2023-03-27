@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 //createSlice es una función que permite crear el estado inicial de un estado y los reducers que vamos a utilizar
 
 const initialState = {
-  cartItems: [],
+  cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
   cartTotalQuantity: 0,
   cartTotalPrice: 0,
 }
@@ -25,11 +25,14 @@ export const cartSlice = createSlice({
         state.cartItems.push({...action.payload, quantity: 1});
         state.cartTotalQuantity += 1;
       }
+      //save cart to localStorage
+      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
     },
     incrementQuantity : (state, action) => {
       const item = state.cartItems.find((item) => item.id === action.payload);
       item.quantity++;
       state.cartTotalQuantity += 1;
+      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
     },
     decrementQuantity : (state, action) => {
       const item = state.cartItems.find((item) => item.id === action.payload);
@@ -40,6 +43,7 @@ export const cartSlice = createSlice({
         item.quantity--;
         state.cartTotalQuantity -= 1;
       }
+      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
     },
     removeItem : (state, action) => {
       //filtramos para que devuelva solo los items diferentes al que queremos eliminar y actualizamos estado cart
@@ -50,6 +54,7 @@ export const cartSlice = createSlice({
         total += item.quantity
       })
       state.cartTotalQuantity = total;
+      localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
     },
   },
 })
